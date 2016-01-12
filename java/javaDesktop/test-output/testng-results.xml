@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="23824" started-at="2016-01-13T01:06:38Z" finished-at="2016-01-13T01:07:01Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="23824" started-at="2016-01-13T01:06:38Z" finished-at="2016-01-13T01:07:01Z">
+      <class name="firefox.FirefoxTestDesktop">
+        <test-method status="PASS" signature="SetupEnvironment()[pri:0, instance:firefox.FirefoxTestDesktop@5a99da]" name="SetupEnvironment" is-config="true" duration-ms="14941" started-at="2016-01-13T01:06:38Z" finished-at="2016-01-13T01:06:53Z">
+        </test-method> <!-- SetupEnvironment -->
+        <test-method status="PASS" signature="GoogleLogin_Invalid()[pri:1, instance:firefox.FirefoxTestDesktop@5a99da]" name="GoogleLogin_Invalid" duration-ms="6675" started-at="2016-01-13T01:06:53Z" description="should not accept empty email or invalid email" finished-at="2016-01-13T01:06:59Z">
+        </test-method> <!-- GoogleLogin_Invalid -->
+        <test-method status="PASS" signature="PosCondition()[pri:0, instance:firefox.FirefoxTestDesktop@5a99da]" name="PosCondition" is-config="true" duration-ms="2103" started-at="2016-01-13T01:06:59Z" finished-at="2016-01-13T01:07:01Z">
+        </test-method> <!-- PosCondition -->
+      </class> <!-- firefox.FirefoxTestDesktop -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
