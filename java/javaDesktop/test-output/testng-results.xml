@@ -1,19 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" total="3" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="23824" started-at="2016-01-13T01:06:38Z" finished-at="2016-01-13T01:07:01Z">
+  <suite name="Google Test Suite" duration-ms="111598" started-at="2016-01-14T02:23:12Z" finished-at="2016-01-14T02:25:04Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="23824" started-at="2016-01-13T01:06:38Z" finished-at="2016-01-13T01:07:01Z">
-      <class name="firefox.FirefoxTestDesktop">
-        <test-method status="PASS" signature="SetupEnvironment()[pri:0, instance:firefox.FirefoxTestDesktop@5a99da]" name="SetupEnvironment" is-config="true" duration-ms="14941" started-at="2016-01-13T01:06:38Z" finished-at="2016-01-13T01:06:53Z">
-        </test-method> <!-- SetupEnvironment -->
-        <test-method status="PASS" signature="GoogleLogin_Invalid()[pri:1, instance:firefox.FirefoxTestDesktop@5a99da]" name="GoogleLogin_Invalid" duration-ms="6675" started-at="2016-01-13T01:06:53Z" description="should not accept empty email or invalid email" finished-at="2016-01-13T01:06:59Z">
+    <test name="Google Tests" duration-ms="111598" started-at="2016-01-14T02:23:12Z" finished-at="2016-01-14T02:25:04Z">
+      <class name="google.GoogleTestsDesktop">
+        <test-method status="PASS" signature="Setup(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:google.GoogleTestsDesktop@1f37ef1]" name="Setup" is-config="true" duration-ms="17515" started-at="2016-01-14T02:23:12Z" finished-at="2016-01-14T02:23:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[krypton.portal@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Admin@123456789]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[krypton.portal2@gmail.com]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Admin@123456789]]>
+              </value>
+            </param>
+          </params>
+        </test-method> <!-- Setup -->
+        <test-method status="PASS" signature="GoogleLogin_Invalid()[pri:1, instance:google.GoogleTestsDesktop@1f37ef1]" name="GoogleLogin_Invalid" duration-ms="18885" started-at="2016-01-14T02:23:30Z" description="should not accept empty email or invalid email" finished-at="2016-01-14T02:23:48Z">
         </test-method> <!-- GoogleLogin_Invalid -->
-        <test-method status="PASS" signature="PosCondition()[pri:0, instance:firefox.FirefoxTestDesktop@5a99da]" name="PosCondition" is-config="true" duration-ms="2103" started-at="2016-01-13T01:06:59Z" finished-at="2016-01-13T01:07:01Z">
-        </test-method> <!-- PosCondition -->
-      </class> <!-- firefox.FirefoxTestDesktop -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        <test-method status="PASS" signature="GoogleLogin_Valid()[pri:2, instance:google.GoogleTestsDesktop@1f37ef1]" name="GoogleLogin_Valid" duration-ms="26331" started-at="2016-01-14T02:23:48Z" description="should accept valid credentials" finished-at="2016-01-14T02:24:15Z">
+        </test-method> <!-- GoogleLogin_Valid -->
+        <test-method status="FAIL" signature="GoogleComposeEmail()[pri:3, instance:google.GoogleTestsDesktop@1f37ef1]" name="GoogleComposeEmail" duration-ms="33379" started-at="2016-01-14T02:24:15Z" description="should compose email successfully by Gmail1" finished-at="2016-01-14T02:24:48Z">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Timed out after 10 seconds waiting for visibility of element located by By.xpath: //*[@id=':5']//div[3]
+Build info: version: '2.48.2', revision: '41bccdd10cf2c0560f637404c2d96164b67d9d67', time: '2015-10-09 13:08:06'
+System info: host: 'SCD010210', ip: '192.168.0.104', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_60'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, chrome={userDataDir=C:\Users\ADMINI~1\AppData\Local\Temp\scoped_dir92368_19411}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=47.0.2526.106, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 0e52d9a15c96dbc3182feb3800d2ab5d]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Timed out after 10 seconds waiting for visibility of element located by By.xpath: //*[@id=':5']//div[3]
+Build info: version: '2.48.2', revision: '41bccdd10cf2c0560f637404c2d96164b67d9d67', time: '2015-10-09 13:08:06'
+System info: host: 'SCD010210', ip: '192.168.0.104', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_60'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, chrome={userDataDir=C:\Users\ADMINI~1\AppData\Local\Temp\scoped_dir92368_19411}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=47.0.2526.106, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 0e52d9a15c96dbc3182feb3800d2ab5d
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:261)
+	at google.GoogleTestsDesktop.Delete_Sent_Msg(GoogleTestsDesktop.java:171)
+	at google.GoogleTestsDesktop.GoogleComposeEmail(GoogleTestsDesktop.java:114)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:207)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:178)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+        </test-method> <!-- GoogleComposeEmail -->
+        <test-method status="PASS" signature="Teardown()[pri:0, instance:google.GoogleTestsDesktop@1f37ef1]" name="Teardown" is-config="true" duration-ms="15245" started-at="2016-01-14T02:24:48Z" finished-at="2016-01-14T02:25:04Z">
+        </test-method> <!-- Teardown -->
+      </class> <!-- google.GoogleTestsDesktop -->
+    </test> <!-- Google Tests -->
+  </suite> <!-- Google Test Suite -->
 </testng-results>

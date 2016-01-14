@@ -1,7 +1,11 @@
 package google;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -9,13 +13,13 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class GoogleTestsDesktop {
-	static ChromeDriver driver = null;
-	
+	private RemoteWebDriver driver = null;
+
 	final static String GOOGLE_URL = "https://mail.google.com";
 	final static String GOOGLE_URL_HOMEPAGE = "https://mail.google.com/mail/u/0/#inbox";
 	final static String TRASH_URL = "https://mail.google.com/mail/u/0/#trash";
 	final static String SENT_URL = "https://mail.google.com/mail/u/0/#sent";
-	
+
 	static String EMAIL_ADDRESS1 = "krypton.portal@gmail.com";
 	static String EMAIL_ADDRESS2 = "krypton.portal2@gmail.com";
 	static String PASSWORDEMAILSEND = "Admin@123456789";
@@ -28,17 +32,25 @@ public class GoogleTestsDesktop {
 	String getBody;
 	String getSentEmail;
 	String getToEmail;
-	
-	@Parameters({"emailSend", "passwordEmailSend", "emailTo", "passwordEmailTo" })
+
+	@Parameters({"browserName","emailSend", "passwordEmailSend", "emailTo", "passwordEmailTo" })
 	@BeforeTest
-	public void Setup(String emailSend, String passwordEmailSend,String emailTo,String passwordEmailTo) {
+	public void Setup(String browserName, String emailSend, String passwordEmailSend,String emailTo,String passwordEmailTo) {
 
 		EMAIL_ADDRESS1 = emailSend;
 		EMAIL_ADDRESS2 = emailTo;
 		PASSWORDEMAILSEND = passwordEmailSend;
 		PASSWORDEMAILTO = passwordEmailTo;
-		SetupChromeDriver setup= new SetupChromeDriver();
-		driver= (ChromeDriver)setup.setupChromeDriver();
+		SetupDriver setup= new SetupDriver();
+
+		if(browserName.toLowerCase().equals("chrome")){
+			driver=(ChromeDriver) setup.setupChromeDriver();
+		}else if(browserName.toLowerCase().equals("ie") || browserName.toLowerCase().equals("internetexplorer")){
+			driver=(InternetExplorerDriver) setup.setupIEDriver();
+		}else{
+			driver=(FirefoxDriver) setup.setupFirefoxDriver();
+		}
+
 		driver.manage().deleteAllCookies();
 		driver.navigate().refresh();
 	}
@@ -76,7 +88,7 @@ public class GoogleTestsDesktop {
 		String getURL = driver.getCurrentUrl();
 		Assert.assertEquals(true, getURL.contains("https://mail.google.com/mail"));
 	}
-	
+
 	@Test(priority = 3, description = "should compose email successfully by Gmail1")
 	public void GoogleComposeEmail() {
 		// should compose email successfully by Gmail1
@@ -110,7 +122,7 @@ public class GoogleTestsDesktop {
 		// delete email on Sent Email and Trash folder on Gmail1
 		Delete_Sent_Msg();
 		Delete_Trash_Msg();
-		
+
 		//Sign out
 		driver.findElementByXPath("//span[@class='gb_Za gbii']").click();
 		Sleep(1000);
@@ -130,7 +142,7 @@ public class GoogleTestsDesktop {
 		getText = driver.findElementByXPath("//div[@class='xT']").getText();
 		Assert.assertEquals(true, getText.contains(SUBJECT1));
 		Assert.assertEquals(true, getText.contains(BODY1));
-		
+
 		driver.findElementByXPath("//div[@class='xT'][1]").click();
 		Sleep(2000);
 		getSubject = driver.findElementByXPath("//h2[@id=':5q']").getText();
@@ -158,7 +170,7 @@ public class GoogleTestsDesktop {
 		driver.findElementById("signIn").click();
 		Sleep(10000);
 	}
-	
+
 	private void Delete_Sent_Msg(){
 		driver.get(SENT_URL);
 		Sleep(3000);
@@ -172,13 +184,13 @@ public class GoogleTestsDesktop {
 
 		Assert.assertEquals(true, getNoEmailMsg.contains("No sent messages!"));
 	}
-	
+
 	private void executeScript(String script){
 		if (driver instanceof JavascriptExecutor) {
 			((JavascriptExecutor) driver).executeScript(script);
 		}
 	}
-	private void Delete_Trash_Msg(){		
+	private void Delete_Trash_Msg(){
 		driver.get(TRASH_URL);
 		Sleep(5000);
 		driver.findElementByXPath("//div[@id=':78'][1]").click();
@@ -189,13 +201,13 @@ public class GoogleTestsDesktop {
 		Assert.assertEquals(MSG_NOEMAIL, getNoEmailMsg);
 	}
 
-	private void Delete_Inbox_Msg(){		
+	private void Delete_Inbox_Msg(){
 		driver.get(GOOGLE_URL_HOMEPAGE);
 		Sleep(5000);
 		driver.findElementByXPath("//div[@id=':3j'][1]").click();
 		Sleep(1000);
 		driver.findElementByXPath("//div[@aria-label='Delete' and contains(@class,'T-I-Zf-aw2')]").click();
-		
+
 		String getNoEmailMsg = driver.findElementByXPath("//div[@class='ae4 aDM']").getText();
 
 		Assert.assertEquals(true, getNoEmailMsg.contains("Your Primary tab is empty."));
